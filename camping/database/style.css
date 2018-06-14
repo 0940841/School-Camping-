@@ -1,0 +1,7 @@
+label {
+    width: 100px;
+    display: inline-block;
+}
+.error{
+    color: red;
+}

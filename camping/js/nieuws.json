@@ -1,0 +1,60 @@
+//DOM ready
+window.addEventListener('load', init);
+
+//globals
+var newsh1;
+/**
+ * Initialize application
+ */
+function init()
+{
+    newsh1 = document.getElementById('news');
+    getnews();
+}
+
+function getnews()
+{
+    reqwest({
+        url:'nieuws.php',
+        contentType:'application/json',
+        success: getnewsSuccesHandler,
+        error: getnewssErrorHandler
+    });
+}
+function getnewsSuccesHandler(data)
+{
+    console.log(data);
+    for ( var i= 0; i < data.length; i++){
+        var news = data[i];
+
+
+        var row = document.createElement('h1');
+
+        var cellkop = document.createElement('div');
+        cellkop.innerHTML = niews.kop;
+        row.appendChild(cellkop);
+
+        newsh1.appendChild(row);
+
+    }
+
+    console.log(data);
+    for ( var i= 0; i < data.length; i++){
+        var news = data[i];
+
+
+        var row = document.createElement('p');
+
+        var cellomschrijving = document.createElement('div');
+        cellomschrijving.innerHTML = niews.omschrijving;
+        row.appendChild(omschrijving);
+
+        newsh1.appendChild(row);
+
+    }
+}
+
+function getnewsErrorHandler(data)
+{
+    console.log('error',data);
+}
